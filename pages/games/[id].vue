@@ -1,8 +1,7 @@
-<script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue'
 import { gsap } from 'gsap'
-import { useGamesStore } from '../stores/games'
+import { useGamesStore } from '~/stores/games'
 
 const route = useRoute()
 const router = useRouter()
@@ -10,7 +9,7 @@ const gamesStore = useGamesStore()
 
 // Get game id from route params
 const gameId = computed(() => {
-  const id = parseInt(route.params.id as string)
+  const id = parseInt(route.params.id)
   return isNaN(id) ? 0 : id
 })
 
@@ -24,10 +23,25 @@ const game = computed(() => {
   return foundGame
 })
 
+// Dynamic page meta based on game data
+watch(game, (newGame) => {
+  if (newGame) {
+    useHead({
+      title: newGame.title,
+      meta: [
+        { name: 'description', content: newGame.shortDescription },
+        { property: 'og:title', content: `${newGame.title} - DormRoom Studios` },
+        { property: 'og:description', content: newGame.shortDescription },
+        { property: 'og:image', content: newGame.coverImage }
+      ]
+    })
+  }
+}, { immediate: true })
+
 // Image gallery
 const activeImage = ref(0)
 
-const showImage = (index: number) => {
+const showImage = (index) => {
   activeImage.value = index
 }
 

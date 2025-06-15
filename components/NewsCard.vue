@@ -1,15 +1,10 @@
-<script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps<{
+<script setup>
+const props = defineProps({
   news: {
-    id: number
-    title: string
-    excerpt: string
-    date: string
-    image: string
+    type: Object,
+    required: true
   }
-}>()
+})
 
 const formattedDate = computed(() => {
   return new Date(props.news.date).toLocaleDateString('en-US', {
@@ -43,7 +38,7 @@ const formattedDate = computed(() => {
         {{ news.excerpt }}
       </p>
       
-      <router-link 
+      <NuxtLink 
         :to="`/news/${news.id}`" 
         class="mt-auto inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
       >
@@ -51,7 +46,7 @@ const formattedDate = computed(() => {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 ml-1">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>
-      </router-link>
+      </NuxtLink>
     </div>
   </div>
 </template>

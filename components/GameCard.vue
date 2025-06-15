@@ -1,23 +1,15 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const props = defineProps<{
+<script setup>
+const props = defineProps({
   game: {
-    id: number
-    title: string
-    shortDescription: string
-    coverImage: string
-    platforms: string[]
-    releaseDate: string
+    type: Object,
+    required: true
   }
-}>()
+})
 
-const router = useRouter()
 const isHovered = ref(false)
 
 const navigateToGame = () => {
-  router.push(`/games/${props.game.id}`)
+  navigateTo(`/games/${props.game.id}`)
 }
 </script>
 

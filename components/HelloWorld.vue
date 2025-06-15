@@ -1,7 +1,10 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
+<script setup>
+const props = defineProps({
+  msg: {
+    type: String,
+    required: true
+  }
+})
 
 const count = ref(0)
 </script>

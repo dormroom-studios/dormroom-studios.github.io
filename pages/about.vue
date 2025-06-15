@@ -1,6 +1,16 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
+
+// Page meta
+useHead({
+  title: 'About Us',
+  meta: [
+    { name: 'description', content: 'Learn about DormRoom Studios, our story, values, and the passionate team behind our immersive gaming experiences.' },
+    { property: 'og:title', content: 'About DormRoom Studios' },
+    { property: 'og:description', content: 'Learn about our story, values, and the passionate team behind our immersive gaming experiences.' }
+  ]
+})
 
 // Team members
 const team = ref([
@@ -80,7 +90,7 @@ onMounted(() => {
           ref="pageTitle" 
           class="text-4xl md:text-5xl font-bold font-display mb-4 text-center"
         >
-          About PixelForge
+          About DormRoom
         </h1>
         <p 
           ref="pageIntro" 
@@ -99,7 +109,7 @@ onMounted(() => {
             <h2 class="text-3xl font-bold font-display mb-6">Our Story</h2>
             
             <p class="text-white/80 mb-4">
-              Founded in 2021, PixelForge Studios began as a collaboration between four industry veterans who shared a vision: to create games that push boundaries while maintaining the soul and creativity of indie development.
+              Founded in 2021, DormRoom Studios began as a collaboration between four industry veterans who shared a vision: to create games that push boundaries while maintaining the soul and creativity of indie development.
             </p>
             
             <p class="text-white/80 mb-4">

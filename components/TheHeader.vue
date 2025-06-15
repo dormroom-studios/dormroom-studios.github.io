@@ -1,7 +1,4 @@
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-
+<script setup>
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const route = useRoute()
@@ -50,50 +47,50 @@ onUnmounted(() => {
   >
     <div class="container">
       <div class="flex items-center justify-between">
-        <router-link to="/" class="flex items-center" @click="closeMenu">
+        <NuxtLink to="/" class="flex items-center" @click="closeMenu">
           <span class="text-2xl font-bold font-display tracking-tight uppercase">
             dorm<span class="text-primary-500">studios</span>
           </span>
-        </router-link>
+        </NuxtLink>
         
         <!-- Desktop Navigation -->
         <nav class="hidden md:block">
           <ul class="flex space-x-8">
             <li>
-              <router-link 
+              <NuxtLink 
                 to="/" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
                 :class="{ 'text-white': route.path === '/' }"
               >
                 Home
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
-              <router-link 
+              <NuxtLink 
                 to="/games" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
                 :class="{ 'text-white': route.path.startsWith('/games') }"
               >
                 Games
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
-              <router-link 
+              <NuxtLink 
                 to="/about" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
                 :class="{ 'text-white': route.path === '/about' }"
               >
                 About
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
-              <router-link 
+              <NuxtLink 
                 to="/news" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
                 :class="{ 'text-white': route.path === '/news' }"
               >
                 News
-              </router-link>
+              </NuxtLink>
             </li>
           </ul>
         </nav>
@@ -136,44 +133,44 @@ onUnmounted(() => {
       <nav>
         <ul class="flex flex-col space-y-8 text-center">
           <li>
-            <router-link 
+            <NuxtLink 
               to="/" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
               :class="{ 'text-primary-500': route.path === '/' }"
               @click="closeMenu"
             >
               Home
-            </router-link>
+            </NuxtLink>
           </li>
           <li>
-            <router-link 
+            <NuxtLink 
               to="/games" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
               :class="{ 'text-primary-500': route.path.startsWith('/games') }"
               @click="closeMenu"
             >
               Games
-            </router-link>
+            </NuxtLink>
           </li>
           <li>
-            <router-link 
+            <NuxtLink 
               to="/about" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
               :class="{ 'text-primary-500': route.path === '/about' }"
               @click="closeMenu"
             >
               About
-            </router-link>
+            </NuxtLink>
           </li>
           <li>
-            <router-link 
+            <NuxtLink 
               to="/news" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
               :class="{ 'text-primary-500': route.path === '/news' }"
               @click="closeMenu"
             >
               News
-            </router-link>
+            </NuxtLink>
           </li>
         </ul>
       </nav>

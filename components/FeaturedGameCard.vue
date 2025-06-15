@@ -1,22 +1,10 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const props = defineProps<{
+<script setup>
+const props = defineProps({
   game: {
-    id: number
-    title: string
-    description: string
-    shortDescription: string
-    coverImage: string
-    screenshots: string[]
-    platforms: string[]
-    releaseDate: string
-    features: string[]
+    type: Object,
+    required: true
   }
-}>()
-
-const router = useRouter()
+})
 
 const activeScreenshot = ref(0)
 
@@ -29,7 +17,7 @@ const prevScreenshot = () => {
 }
 
 const navigateToGame = () => {
-  router.push(`/games/${props.game.id}`)
+  navigateTo(`/games/${props.game.id}`)
 }
 </script>
 

@@ -1,8 +1,18 @@
-<script setup lang="ts">
+<script setup>
 import { ref, computed, onMounted } from 'vue'
 import { gsap } from 'gsap'
-import { useGamesStore } from '../stores/games'
-import GameCard from '../components/GameCard.vue'
+import { useGamesStore } from '~/stores/games'
+// Components are auto-imported by Nuxt
+
+// Page meta
+useHead({
+  title: 'Our Games',
+  meta: [
+    { name: 'description', content: 'Discover our collection of immersive games designed to transport you to new worlds and adventures.' },
+    { property: 'og:title', content: 'Our Games - DormRoom Studios' },
+    { property: 'og:description', content: 'Discover our collection of immersive games designed to transport you to new worlds and adventures.' }
+  ]
+})
 
 const gamesStore = useGamesStore()
 const games = computed(() => gamesStore.getAllGames)

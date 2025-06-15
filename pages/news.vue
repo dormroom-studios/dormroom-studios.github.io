@@ -1,8 +1,18 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
 
-import NewsCard from '../components/NewsCard.vue'
+// Components are auto-imported by Nuxt
+
+// Page meta
+useHead({
+  title: 'News & Updates',
+  meta: [
+    { name: 'description', content: 'Stay up to date with the latest news, game updates, and events from DormRoom Studios.' },
+    { property: 'og:title', content: 'News & Updates - DormRoom Studios' },
+    { property: 'og:description', content: 'Stay up to date with the latest news, game updates, and events from DormRoom Studios.' }
+  ]
+})
 
 // News items
 const newsItems = ref([
@@ -29,7 +39,7 @@ const newsItems = ref([
   },
   {
     id: 4,
-    title: 'PixelForge at GDC 2025: Meet the Team',
+    title: 'DormRoom at GDC 2025: Meet the Team',
     excerpt: 'We\'re excited to announce that our team will be attending GDC 2025! Stop by our booth to play demos of upcoming games and chat with our developers.',
     date: '2025-01-30',
     image: 'https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -93,7 +103,7 @@ onMounted(() => {
           ref="pageDescription" 
           class="text-lg text-white/80 max-w-2xl mx-auto text-center"
         >
-          Stay up to date with the latest news, game updates, and events from PixelForge Studios.
+          Stay up to date with the latest news, game updates, and events from DormRoom Studios.
         </p>
       </div>
     </section>

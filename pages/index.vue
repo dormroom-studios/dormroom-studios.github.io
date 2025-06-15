@@ -1,11 +1,19 @@
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
-import { useGamesStore } from '../stores/games'
+import { useGamesStore } from '~/stores/games'
 
-import FeaturedGameCard from '../components/FeaturedGameCard.vue'
-import GameCard from '../components/GameCard.vue'
-import NewsCard from '../components/NewsCard.vue'
+// Components are auto-imported by Nuxt
+
+// Page meta
+useHead({
+  title: 'Home',
+  meta: [
+    { name: 'description', content: 'An independent game studio creating captivating worlds and unforgettable adventures for players worldwide.' },
+    { property: 'og:title', content: 'DormRoom Studios - Crafting Immersive Gaming Experiences' },
+    { property: 'og:description', content: 'An independent game studio creating captivating worlds and unforgettable adventures for players worldwide.' }
+  ]
+})
 
 const gamesStore = useGamesStore()
 
@@ -15,7 +23,7 @@ const heroSubtitle = ref(null)
 const heroCta = ref(null)
 const heroImage = ref(null)
 
-// Fetch featured game (would typically come from an API)
+// Fetch featured game
 const featuredGame = gamesStore.getFeaturedGame
 
 // Get latest games (excluding featured)
@@ -86,12 +94,12 @@ onMounted(() => {
               An independent game studio creating captivating worlds and unforgettable adventures for players worldwide.
             </p>
             <div ref="heroCta" class="flex flex-wrap gap-4">
-              <router-link to="/games" class="btn btn-primary">
+              <NuxtLink to="/games" class="btn btn-primary">
                 Explore Our Games
-              </router-link>
-              <router-link to="/about" class="btn btn-outline">
+              </NuxtLink>
+              <NuxtLink to="/about" class="btn btn-outline">
                 About Us
-              </router-link>
+              </NuxtLink>
             </div>
           </div>
           <div ref="heroImage" class="relative">
@@ -105,12 +113,12 @@ onMounted(() => {
               <div class="absolute bottom-0 left-0 right-0 p-6">
                 <h3 class="text-2xl font-bold mb-2">{{ featuredGame.title }}</h3>
                 <p class="text-white/80 mb-4">{{ featuredGame.shortDescription }}</p>
-                <router-link 
+                <NuxtLink 
                   :to="`/games/${featuredGame.id}`" 
                   class="btn btn-accent"
                 >
                   Learn More
-                </router-link>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -141,9 +149,9 @@ onMounted(() => {
           <h2 class="text-3xl md:text-4xl font-bold font-display">
             Our Games
           </h2>
-          <router-link to="/games" class="btn btn-outline">
+          <NuxtLink to="/games" class="btn btn-outline">
             View All
-          </router-link>
+          </NuxtLink>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -163,9 +171,9 @@ onMounted(() => {
           <h2 class="text-3xl md:text-4xl font-bold font-display">
             Latest News
           </h2>
-          <router-link to="/news" class="btn btn-outline">
+          <NuxtLink to="/news" class="btn btn-outline">
             View All
-          </router-link>
+          </NuxtLink>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

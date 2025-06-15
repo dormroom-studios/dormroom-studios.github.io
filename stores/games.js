@@ -1,18 +1,5 @@
 import { defineStore } from 'pinia'
 
-interface Game {
-  id: number
-  title: string
-  description: string
-  shortDescription: string
-  coverImage: string
-  screenshots: string[]
-  platforms: string[]
-  releaseDate: string
-  featured: boolean
-  features: string[]
-}
-
 export const useGamesStore = defineStore('games', {
   state: () => ({
     games: [
@@ -104,15 +91,15 @@ export const useGamesStore = defineStore('games', {
           "Destructible environments affected by weapons and crashes"
         ]
       }
-    ] as Game[]
+    ]
   }),
   
   getters: {
-    getAllGames(): Game[] {
+    getAllGames() {
       return this.games
     },
     
-    getFeaturedGame(): Game {
+    getFeaturedGame() {
       return this.games.find(game => game.featured) || this.games[0]
     },
     
@@ -123,8 +110,8 @@ export const useGamesStore = defineStore('games', {
         .slice(0, limit)
     },
     
-    getGameById: (state) => (id: number) => {
-      return state.games.find(game => game.id === id)
+    getGameById: (state) => (id) => {
+      return state.games.find(game => game.id === parseInt(id))
     }
   }
 })

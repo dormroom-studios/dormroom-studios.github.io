@@ -1,19 +1,7 @@
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-
-interface Particle {
-  x: number
-  y: number
-  size: number
-  speedX: number
-  speedY: number
-  opacity: number
-}
-
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-const particles = ref<Particle[]>([])
-const animationFrameId = ref<number | null>(null)
+<script setup>
+const canvasRef = ref(null)
+const particles = ref([])
+const animationFrameId = ref(null)
 const route = useRoute()
 
 const createParticles = () => {
@@ -80,7 +68,7 @@ const animate = () => {
   animationFrameId.value = requestAnimationFrame(animate)
 }
 
-const connectParticles = (ctx: CanvasRenderingContext2D) => {
+const connectParticles = (ctx) => {
   const maxDistance = 100
   
   for (let i = 0; i < particles.value.length; i++) {

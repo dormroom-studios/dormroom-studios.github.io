@@ -1,9 +1,7 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
+<script setup>
 const email = ref('')
 const isSubmitting = ref(false)
-const subscribeResult = ref<{ success: boolean; message: string } | null>(null)
+const subscribeResult = ref(null)
 
 const handleSubscribe = async () => {
   if (!email.value || !email.value.includes('@')) {
@@ -41,7 +39,7 @@ const handleSubscribe = async () => {
         <!-- Studio info -->
         <div>
           <h3 class="text-xl font-bold font-display mb-4">
-            PIXEL<span class="text-primary-500">FORGE</span>
+            DORM<span class="text-primary-500">ROOM</span>
           </h3>
           <p class="text-white/70 mb-4">
             Crafting immersive gaming experiences with passion and innovation.
@@ -73,19 +71,19 @@ const handleSubscribe = async () => {
           <h4 class="text-lg font-bold mb-4">Quick Links</h4>
           <ul class="space-y-2">
             <li>
-              <router-link to="/games" class="text-white/70 hover:text-primary-500 transition-colors">
+              <NuxtLink to="/games" class="text-white/70 hover:text-primary-500 transition-colors">
                 Our Games
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
-              <router-link to="/about" class="text-white/70 hover:text-primary-500 transition-colors">
+              <NuxtLink to="/about" class="text-white/70 hover:text-primary-500 transition-colors">
                 About Us
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
-              <router-link to="/news" class="text-white/70 hover:text-primary-500 transition-colors">
+              <NuxtLink to="/news" class="text-white/70 hover:text-primary-500 transition-colors">
                 News & Updates
-              </router-link>
+              </NuxtLink>
             </li>
             <li>
               <a href="#" class="text-white/70 hover:text-primary-500 transition-colors">
@@ -100,8 +98,8 @@ const handleSubscribe = async () => {
           <h4 class="text-lg font-bold mb-4">Contact</h4>
           <ul class="space-y-2 text-white/70">
             <li>
-              <a href="mailto:info@pixelforge.com" class="hover:text-primary-500 transition-colors">
-                info@pixelforge.com
+              <a href="mailto:info@dormroom.in" class="hover:text-primary-500 transition-colors">
+                info@dormroom.in
               </a>
             </li>
             <li>San Francisco, CA</li>
