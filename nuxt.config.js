@@ -3,12 +3,9 @@ export default defineNuxtConfig({
   
   // Generate static files to dist directory for GitHub Pages
   nitro: {
+    preset: 'static',
     output: {
-      dir: 'dist',
-      publicDir: 'dist'
-    },
-    prerender: {
-      routes: ['/']
+      publicDir: 'dist/public'
     }
   },
 
@@ -23,6 +20,8 @@ export default defineNuxtConfig({
 
   // App configuration
   app: {
+    // Set base URL for GitHub Pages (update with your repo name if not using custom domain)
+    baseURL: process.env.NODE_ENV === 'production' ? '/' : '/',
     head: {
       title: 'DormRoom Studios',
       meta: [
