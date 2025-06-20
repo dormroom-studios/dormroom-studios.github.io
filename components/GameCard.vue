@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue'
+
 const props = defineProps({
   game: {
     type: Object,
@@ -57,13 +59,17 @@ const navigateToGame = () => {
           </span>
         </div>
         
-        <!-- Learn more button (only visible on hover) -->
-        <button 
-          class="btn btn-primary btn-sm w-full transform transition-all duration-300"
+        <!-- Play Now button (only visible on hover) -->
+        <a 
+          :href="game.playLink" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-sm w-full transform transition-all duration-300 inline-block text-center"
           :class="{ 'translate-y-0 opacity-100': isHovered, 'translate-y-4 opacity-0': !isHovered }"
+          @click.stop
         >
-          Learn More
-        </button>
+          Play Now
+        </a>
       </div>
     </div>
   </div>

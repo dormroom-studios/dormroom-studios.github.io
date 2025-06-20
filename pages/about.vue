@@ -12,33 +12,8 @@ useHead({
   ]
 })
 
-// Team members
-const team = ref([
-  {
-    name: 'Alex Chen',
-    role: 'Founder & Creative Director',
-    bio: 'Former lead designer at major studios with over 15 years of experience crafting award-winning games.',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  },
-  {
-    name: 'Samantha Wong',
-    role: 'Lead Developer',
-    bio: 'Programming virtuoso with expertise in game engine architecture and performance optimization.',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  },
-  {
-    name: 'Marcus Johnson',
-    role: 'Art Director',
-    bio: 'Award-winning digital artist who brings worlds to life with a distinctive visual style and attention to detail.',
-    image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  },
-  {
-    name: 'Elena Rodriguez',
-    role: 'Lead Game Designer',
-    bio: 'Passionate about creating memorable player experiences with innovative gameplay mechanics.',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-  }
-])
+// Team members - keeping it simple and authentic to small indie studio
+const team = ref([])
 
 // Animation references
 const pageTitle = ref(null)
@@ -96,7 +71,7 @@ onMounted(() => {
           ref="pageIntro" 
           class="text-lg text-white/80 max-w-2xl mx-auto text-center"
         >
-          We are a passionate indie game studio dedicated to creating immersive, innovative gaming experiences.
+          We craft immersive single-player mobile games where stories come first.
         </p>
       </div>
     </section>
@@ -109,15 +84,15 @@ onMounted(() => {
             <h2 class="text-3xl font-bold font-display mb-6">Our Story</h2>
             
             <p class="text-white/80 mb-4">
-              Founded in 2021, DormRoom Studios began as a collaboration between four industry veterans who shared a vision: to create games that push boundaries while maintaining the soul and creativity of indie development.
+              Dormroom Studios began with one mission: to create meaningful, story-driven mobile experiences that resonate with players. We're passionate creators who believe in the power of immersive storytelling.
             </p>
             
             <p class="text-white/80 mb-4">
-              After years of working at larger studios, we wanted to build a company where creative freedom and player experience would always come first. Our small but mighty team brings together decades of combined experience in game design, art, programming, and storytelling.
+              Our debut game, "The Last Adventurer," represents our vision of what mobile gaming can be—a cinematic, first-person journey through a post-apocalyptic world where every step tells a story.
             </p>
             
             <p class="text-white/80">
-              Today, we're proud to have released several acclaimed titles that reflect our commitment to quality, innovation, and delivering unforgettable experiences to players worldwide.
+              We're just getting started, and we're excited to share more adventures with you. Thank you for being part of our journey from the very beginning.
             </p>
           </div>
           
@@ -207,44 +182,31 @@ onMounted(() => {
         
         <div 
           ref="teamSection" 
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          class="text-center"
         >
-          <div 
-            v-for="(member, index) in team" 
-            :key="index"
-            class="card overflow-hidden group"
-          >
-            <div class="aspect-square overflow-hidden">
-              <img 
-                :src="member.image" 
-                :alt="member.name"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
-            
-            <div class="p-5">
-              <h3 class="text-xl font-bold mb-1">{{ member.name }}</h3>
-              <p class="text-primary-400 text-sm mb-3">{{ member.role }}</p>
-              <p class="text-white/80 text-sm">{{ member.bio }}</p>
-            </div>
-          </div>
+          <p class="text-white/80 max-w-2xl mx-auto">
+            We're a small team of passionate creators who believe in the power of storytelling through interactive experiences. Every member of our team contributes to crafting games that leave a lasting emotional impact.
+          </p>
         </div>
       </div>
     </section>
     
-    <!-- Join us -->
+    <!-- Contact us -->
     <section class="section bg-neutral-950/70">
       <div class="container">
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-3xl font-bold font-display mb-6">
-            Join Our Team
+            Get In Touch
           </h2>
           <p class="text-white/80 mb-8">
-            We're always looking for talented individuals who are passionate about creating amazing games. If you think you'd be a good fit for our studio, we'd love to hear from you.
+            We'd love to hear from you—whether you're a player with feedback, a fellow dev, or someone who just wants to say hi.
           </p>
           
-          <a href="#" class="btn btn-primary">
-            View Open Positions
+          <a href="mailto:hello@dormroom.in" class="btn btn-primary inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            hello@dormroom.in
           </a>
         </div>
       </div>

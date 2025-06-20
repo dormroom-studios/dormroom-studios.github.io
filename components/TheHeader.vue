@@ -49,7 +49,7 @@ onUnmounted(() => {
       <div class="flex items-center justify-between">
         <NuxtLink to="/" class="flex items-center" @click="closeMenu">
           <span class="text-2xl font-bold font-display tracking-tight uppercase">
-            dorm<span class="text-primary-500">studios</span>
+            <span class="text-secondary-400">DORM</span><span class="text-primary-500">ROOM</span>
           </span>
         </NuxtLink>
         
@@ -84,13 +84,12 @@ onUnmounted(() => {
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink 
-                to="/news" 
+              <a 
+                href="mailto:hello@dormroom.in" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
-                :class="{ 'text-white': route.path === '/news' }"
               >
-                News
-              </NuxtLink>
+                Contact
+              </a>
             </li>
           </ul>
         </nav>
@@ -163,14 +162,13 @@ onUnmounted(() => {
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink 
-              to="/news" 
+            <a 
+              href="mailto:hello@dormroom.in" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
-              :class="{ 'text-primary-500': route.path === '/news' }"
               @click="closeMenu"
             >
-              News
-            </NuxtLink>
+              Contact
+            </a>
           </li>
         </ul>
       </nav>

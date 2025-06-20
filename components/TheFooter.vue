@@ -42,7 +42,7 @@ const handleSubscribe = async () => {
             DORM<span class="text-primary-500">ROOM</span>
           </h3>
           <p class="text-white/70 mb-4">
-            Crafting immersive gaming experiences with passion and innovation.
+            We craft immersive single-player mobile games where stories come first.
           </p>
           <div class="flex space-x-4">
             <a href="#" class="text-white/70 hover:text-primary-500 transition-colors">
@@ -81,13 +81,8 @@ const handleSubscribe = async () => {
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/news" class="text-white/70 hover:text-primary-500 transition-colors">
-                News & Updates
-              </NuxtLink>
-            </li>
-            <li>
-              <a href="#" class="text-white/70 hover:text-primary-500 transition-colors">
-                Careers
+              <a href="mailto:hello@dormroom.in" class="text-white/70 hover:text-primary-500 transition-colors">
+                Contact
               </a>
             </li>
           </ul>
@@ -98,56 +93,19 @@ const handleSubscribe = async () => {
           <h4 class="text-lg font-bold mb-4">Contact</h4>
           <ul class="space-y-2 text-white/70">
             <li>
-              <a href="mailto:info@dormroom.in" class="hover:text-primary-500 transition-colors">
-                info@dormroom.in
+              <a href="mailto:hello@dormroom.in" class="hover:text-primary-500 transition-colors">
+                hello@dormroom.in
               </a>
             </li>
-            <li>San Francisco, CA</li>
-            <li>United States</li>
           </ul>
         </div>
         
-        <!-- Newsletter -->
+        <!-- Mission -->
         <div>
-          <h4 class="text-lg font-bold mb-4">Stay Updated</h4>
-          <p class="text-white/70 mb-4">
-            Subscribe to our newsletter for exclusive content and updates.
+          <h4 class="text-lg font-bold mb-4">Our Mission</h4>
+          <p class="text-white/70">
+            Creating meaningful, story-driven mobile games that resonate. Games where your decisions matter, where narratives linger, and where characters feel real.
           </p>
-          <form @submit.prevent="handleSubscribe" class="space-y-2">
-            <div>
-              <input 
-                type="email" 
-                v-model="email" 
-                placeholder="Your email" 
-                class="w-full px-4 py-2 rounded-md bg-neutral-800 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                :disabled="isSubmitting"
-              />
-            </div>
-            <button 
-              type="submit" 
-              class="w-full btn btn-primary"
-              :disabled="isSubmitting"
-            >
-              <span v-if="isSubmitting">
-                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Subscribing...
-              </span>
-              <span v-else>Subscribe</span>
-            </button>
-            <div v-if="subscribeResult" class="mt-2">
-              <p 
-                :class="[
-                  'text-sm', 
-                  subscribeResult.success ? 'text-green-400' : 'text-red-400'
-                ]"
-              >
-                {{ subscribeResult.message }}
-              </p>
-            </div>
-          </form>
         </div>
       </div>
       
