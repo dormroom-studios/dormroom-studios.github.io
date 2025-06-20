@@ -77,37 +77,39 @@ const navigateToGame = () => {
   <div class="overflow-hidden bg-neutral-800/50 backdrop-blur-md border border-white/10 rounded-lg">
     <div class="grid grid-cols-1 lg:grid-cols-2 items-stretch">
       <!-- Game trailer and screenshots -->
-      <div class="relative overflow-hidden">
+      <div class="relative overflow-hidden flex items-center justify-center p-4">
         <!-- Main display area with aspect ratio -->
-        <div class="relative aspect-video bg-neutral-900">
-          <!-- Trailer (if available) -->
-          <div v-if="game.trailerUrl && activeScreenshot === -1" class="absolute inset-0">
-            <TrailerPlayer 
-              :youtube-url="game.trailerUrl"
-              :thumbnail-image="game.coverImage"
-            />
-          </div>
-          
-          <!-- Screenshots -->
-          <div v-else class="absolute inset-0">
-            <transition-group name="fade">
-              <img 
-                v-for="(screenshot, index) in game.screenshots" 
-                :key="index"
-                :src="screenshot" 
-                :alt="`${game.title} screenshot ${index + 1}`"
-                class="absolute inset-0 w-full h-full object-cover"
-                v-show="index === activeScreenshot"
+        <div class="relative w-full max-w-2xl">
+          <div class="relative aspect-video bg-neutral-900 rounded-lg overflow-hidden">
+            <!-- Trailer (if available) -->
+            <div v-if="game.trailerUrl && activeScreenshot === -1" class="absolute inset-0">
+              <TrailerPlayer 
+                :youtube-url="game.trailerUrl"
+                :thumbnail-image="game.coverImage"
               />
-            </transition-group>
+            </div>
+            
+            <!-- Screenshots -->
+            <div v-else class="absolute inset-0">
+              <transition-group name="fade">
+                <img 
+                  v-for="(screenshot, index) in game.screenshots" 
+                  :key="index"
+                  :src="screenshot" 
+                  :alt="`${game.title} screenshot ${index + 1}`"
+                  class="absolute inset-0 w-full h-full object-cover"
+                  v-show="index === activeScreenshot"
+                />
+              </transition-group>
+            </div>
           </div>
           
-          <!-- Thumbnail Carousel - Moved inside the aspect-video container -->
-          <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 via-black/70 to-transparent">
-            <div class="relative">
-              <div class="overflow-hidden">
+          <!-- Thumbnail Carousel - Centered below the main image -->
+          <div class="mt-4 flex justify-center">
+            <div class="relative bg-neutral-900/90 backdrop-blur-sm rounded-lg p-3">
+              <div class="overflow-hidden max-w-md">
                 <div 
-                  class="flex gap-2 transition-transform duration-300"
+                  class="flex gap-2 transition-transform duration-300 justify-center"
                   :style="{ transform: `translateX(-${carouselOffset}px)` }"
                 >
                   <!-- Trailer thumbnail -->
@@ -151,10 +153,10 @@ const navigateToGame = () => {
           </div>
         </div>
         
-        <!-- Navigation arrows -->
+        <!-- Navigation arrows - positioned on the main image -->
         <button 
           @click.stop="prevScreenshot" 
-          class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white transition-colors"
+          class="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white transition-colors z-10"
           aria-label="Previous screenshot"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -164,7 +166,7 @@ const navigateToGame = () => {
         
         <button 
           @click.stop="nextScreenshot" 
-          class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white transition-colors"
+          class="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white transition-colors z-10"
           aria-label="Next screenshot"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
