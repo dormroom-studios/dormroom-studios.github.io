@@ -84,12 +84,22 @@ onUnmounted(() => {
               </NuxtLink>
             </li>
             <li>
-              <a 
-                href="mailto:hello@dormroom.in" 
+              <NuxtLink 
+                to="/careers" 
                 class="text-white/80 hover:text-white transition-colors font-medium"
+                :class="{ 'text-white': route.path.startsWith('/careers') }"
+              >
+                Careers
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink 
+                to="/contact" 
+                class="text-white/80 hover:text-white transition-colors font-medium"
+                :class="{ 'text-white': route.path === '/contact' }"
               >
                 Contact
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </nav>
@@ -162,13 +172,24 @@ onUnmounted(() => {
             </NuxtLink>
           </li>
           <li>
-            <a 
-              href="mailto:hello@dormroom.in" 
+            <NuxtLink 
+              to="/careers" 
               class="text-2xl font-medium hover:text-primary-500 transition-colors"
+              :class="{ 'text-primary-500': route.path.startsWith('/careers') }"
+              @click="closeMenu"
+            >
+              Careers
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink 
+              to="/contact" 
+              class="text-2xl font-medium hover:text-primary-500 transition-colors"
+              :class="{ 'text-primary-500': route.path === '/contact' }"
               @click="closeMenu"
             >
               Contact
-            </a>
+            </NuxtLink>
           </li>
         </ul>
       </nav>
