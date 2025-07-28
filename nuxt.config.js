@@ -39,5 +39,13 @@ export default defineNuxtConfig({
   },
 
   // Development server
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+
+  // Runtime config
+  runtimeConfig: {
+    public: {
+      contactEmail: process.env.NUXT_PUBLIC_CONTACT_EMAIL,
+      careersEmail: process.env.NUXT_PUBLIC_CAREERS_EMAIL,
+    }
+  }
 })

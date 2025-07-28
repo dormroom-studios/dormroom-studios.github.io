@@ -1,4 +1,8 @@
 <script setup>
+// Get email addresses from environment
+const config = useRuntimeConfig()
+const contactEmail = config.public.contactEmail
+
 const email = ref('')
 const isSubmitting = ref(false)
 const subscribeResult = ref(null)
@@ -81,7 +85,12 @@ const handleSubscribe = async () => {
               </NuxtLink>
             </li>
             <li>
-              <a href="mailto:hello@dormroom.in" class="text-white/70 hover:text-primary-500 transition-colors">
+              <NuxtLink to="/careers" class="text-white/70 hover:text-primary-500 transition-colors">
+                Careers
+              </NuxtLink>
+            </li>
+            <li>
+              <a :href="`mailto:${contactEmail}`" class="text-white/70 hover:text-primary-500 transition-colors">
                 Contact
               </a>
             </li>
@@ -93,8 +102,8 @@ const handleSubscribe = async () => {
           <h4 class="text-lg font-bold mb-4">Contact</h4>
           <ul class="space-y-2 text-white/70">
             <li>
-              <a href="mailto:hello@dormroom.in" class="hover:text-primary-500 transition-colors">
-                hello@dormroom.in
+              <a :href="`mailto:${contactEmail}`" class="hover:text-primary-500 transition-colors">
+                {{ contactEmail }}
               </a>
             </li>
           </ul>
