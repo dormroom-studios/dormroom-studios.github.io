@@ -11,7 +11,7 @@ const props = defineProps({
 const isHovered = ref(false)
 
 const navigateToGame = () => {
-  navigateTo(`/games/${props.game.id}`)
+  navigateTo(`/games/${props.game.slug}`)
 }
 </script>
 
