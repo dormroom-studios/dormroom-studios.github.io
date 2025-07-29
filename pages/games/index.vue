@@ -1,7 +1,7 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
-import { useGamesStore } from '~/stores/games'
+import { getAllGames } from '~/utils/games'
 // Components are auto-imported by Nuxt
 
 // Page meta
@@ -14,8 +14,12 @@ useHead({
   ]
 })
 
-const gamesStore = useGamesStore()
-const games = computed(() => gamesStore.getAllGames)
+// Load games from markdown files
+const games = ref([])
+
+onMounted(() => {
+  games.value = getAllGames()
+})
 
 // Animation references
 const pageTitle = ref(null)
@@ -85,12 +89,10 @@ onMounted(() => {
             />
           </div>
           
-          <!-- Show our featured game directly if store has issues -->
-          <div v-else class="max-w-4xl mx-auto">
-            <div class="text-center mb-8">
-              <h2 class="text-2xl font-bold mb-4">Our Featured Game</h2>
-            </div>
-            <FeaturedGameCard :game="gamesStore.getFeaturedGame" />
+          <!-- No games message -->
+          <div v-else class="text-center py-16">
+            <h2 class="text-2xl font-bold mb-4">No games available yet</h2>
+            <p class="text-white/60">Check back soon for our latest releases!</p>
           </div>
           
           <template #fallback>

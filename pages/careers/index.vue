@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
+import { getAllJobs } from '~/utils/jobs'
+
 
 // Get email addresses from environment
 const config = useRuntimeConfig()
@@ -16,54 +18,12 @@ useHead({
   ]
 })
 
-// Job listings - brief info for careers page
-const jobs = ref([
-  {
-    id: 1,
-    slug: 'senior-game-developer',
-    title: 'Senior Game Developer',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Engineering',
-    salary: '$80,000 - $120,000',
-    briefDescription: 'Experienced game developer to implement core gameplay mechanics and systems.',
-    keyRequirements: [
-      '5+ years of game development experience',
-      'Strong proficiency in Unity or Unreal Engine',
-      'Experience with mobile game optimization'
-    ]
-  },
-  {
-    id: 2,
-    slug: '3d-environment-artist',
-    title: '3D Environment Artist',
-    type: 'Contract',
-    location: 'Remote',
-    department: 'Art',
-    salary: '$60,000 - $85,000',
-    briefDescription: 'Create stunning, atmospheric environments that support our storytelling.',
-    keyRequirements: [
-      '3+ years of experience in game environment art',
-      'Proficiency in Blender, Maya, or similar 3D software',
-      'Strong understanding of PBR workflows'
-    ]
-  },
-  {
-    id: 3,
-    slug: 'narrative-designer',
-    title: 'Narrative Designer',
-    type: 'Full-time',
-    location: 'Remote',
-    department: 'Design',
-    salary: '$65,000 - $90,000',
-    briefDescription: 'Craft compelling stories and memorable characters through dialogue and quest design.',
-    keyRequirements: [
-      'Proven experience in game narrative design',
-      'Strong writing skills with published work',
-      'Understanding of interactive storytelling'
-    ]
-  }
-])
+// Load jobs from markdown files
+const jobs = ref([])
+
+onMounted(() => {
+  jobs.value = getAllJobs()
+})
 
 // Animation references
 const pageTitle = ref(null)
@@ -195,7 +155,7 @@ onMounted(() => {
           <div 
             v-if="jobs && jobs.length > 0"
             v-for="job in jobs" 
-            :key="job.id"
+            :key="job._id || job.slug"
             class="bg-neutral-800/90 border border-white/20 rounded-lg p-6 hover:shadow-glow transition-all duration-300"
           >
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
@@ -219,7 +179,7 @@ onMounted(() => {
               </div>
               <div>
                 <NuxtLink 
-                  :to="`/careers-${job.slug}`"
+                  :to="`/careers/${job.slug}`"
                   class="btn btn-primary text-sm"
                 >
                   View Details

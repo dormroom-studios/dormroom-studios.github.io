@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
-import { useGamesStore } from '~/stores/games'
+import { getAllGames, getFeaturedGames, getOurGames } from '~/utils/games'
 
 // Components are auto-imported by Nuxt
 
@@ -15,23 +15,26 @@ useHead({
   ]
 })
 
-const gamesStore = useGamesStore()
-
 // Hero animation references
 const heroTitle = ref(null)
 const heroSubtitle = ref(null)
 const heroCta = ref(null)
 const heroImage = ref(null)
 
-// Fetch featured game
-const featuredGame = gamesStore.getFeaturedGame
-
-// Get latest games (excluding featured)
-const latestGames = gamesStore.getLatestGames(3)
-
-// No news section needed - keeping it simple like the React site
+// Games data
+const games = ref([])
+const ourGames = ref([])
+const featuredGame = ref(null)
 
 onMounted(() => {
+  // Load games from markdown
+  games.value = getAllGames()
+  ourGames.value = getOurGames()
+  
+  // Get featured game or first game
+  const featuredGames = getFeaturedGames()
+  featuredGame.value = featuredGames.length > 0 ? featuredGames[0] : games.value[0]
+
   // Animate hero section
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
   
@@ -87,35 +90,50 @@ onMounted(() => {
             </div>
           </div>
           <div ref="heroImage" class="relative">
-            <!-- Game Image -->
-            <div class="relative rounded-lg overflow-hidden shadow-xl mb-6">
-              <img 
-                :src="featuredGame.coverImage" 
-                :alt="featuredGame.title" 
-                class="w-full h-full object-cover aspect-video"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent"></div>
+            <div v-if="featuredGame">
+              <!-- Game Image -->
+              <div class="relative rounded-lg overflow-hidden shadow-xl mb-6">
+                <img 
+                  :src="featuredGame.coverImage" 
+                  :alt="featuredGame.title" 
+                  class="w-full h-full object-cover aspect-video"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/70 to-transparent"></div>
+              </div>
+              
+              <!-- Game info below image -->
+              <div class="text-center">
+                <h3 class="text-2xl font-bold mb-2">{{ featuredGame.title }}</h3>
+                <p class="text-white/80 mb-4">{{ featuredGame.shortDescription }}</p>
+                <div class="flex flex-wrap gap-3 justify-center">
+                  <a 
+                    :href="featuredGame.playLink" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                  >
+                    Play Now
+                  </a>
+                  <NuxtLink 
+                    :to="`/games/${featuredGame.slug}`" 
+                    class="btn btn-outline"
+                  >
+                    Learn More
+                  </NuxtLink>
+                </div>
+              </div>
             </div>
             
-            <!-- Game info below image -->
-            <div class="text-center">
-              <h3 class="text-2xl font-bold mb-2">{{ featuredGame.title }}</h3>
-              <p class="text-white/80 mb-4">{{ featuredGame.shortDescription }}</p>
-              <div class="flex flex-wrap gap-3 justify-center">
-                <a 
-                  :href="featuredGame.playLink" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="btn btn-primary"
-                >
-                  Play Now
-                </a>
-                <NuxtLink 
-                  :to="`/games/${featuredGame.id}`" 
-                  class="btn btn-outline"
-                >
-                  Learn More
-                </NuxtLink>
+            <!-- Loading placeholder -->
+            <div v-else class="animate-pulse">
+              <div class="bg-neutral-700 rounded-lg aspect-video mb-6"></div>
+              <div class="text-center space-y-4">
+                <div class="h-8 bg-neutral-700 rounded mx-auto w-48"></div>
+                <div class="h-4 bg-neutral-700 rounded mx-auto w-64"></div>
+                <div class="flex gap-3 justify-center">
+                  <div class="h-12 bg-neutral-700 rounded w-24"></div>
+                  <div class="h-12 bg-neutral-700 rounded w-28"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -123,19 +141,39 @@ onMounted(() => {
       </div>
     </section>
     
-    <!-- Featured Game Section -->
+    <!-- Our Games Section -->
     <section class="section bg-neutral-950/50">
       <div class="container">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold font-display mb-4">
-            Our Game
+            Our Games
           </h2>
           <p class="text-white/70 max-w-2xl mx-auto">
-            Dive into our post-apocalyptic adventure and find your purpose as the Last Man on Earth.
+            Explore our collection of immersive story-driven games that put narrative first.
           </p>
         </div>
         
-        <FeaturedGameCard :game="featuredGame" />
+        <div v-if="ourGames.length > 0" class="flex justify-center">
+          <div 
+            class="grid gap-8 max-w-sm"
+            :class="{
+              'grid-cols-1': ourGames.length === 1,
+              'grid-cols-1 md:grid-cols-2 max-w-2xl': ourGames.length === 2,
+              'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl': ourGames.length >= 3
+            }"
+          >
+            <GameCard 
+              v-for="game in ourGames" 
+              :key="game.id" 
+              :game="game" 
+            />
+          </div>
+        </div>
+        
+        <!-- Fallback if no games -->
+        <div v-else class="text-center text-white/60">
+          <p>No games available at the moment.</p>
+        </div>
       </div>
     </section>
     
