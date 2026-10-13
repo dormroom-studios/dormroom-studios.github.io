@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://dormroom.in/sitemap.xml

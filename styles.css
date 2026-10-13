@@ -92,7 +92,7 @@ html { scroll-snap-type: y proximity; }
 .missing .hero-art { opacity: .25; filter: grayscale(.6); }
 .missing::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(8,9,11,.92) 100%); pointer-events: none; }
 .missing-text { position: relative; z-index: 1; padding: 0 var(--gutter) 32px; display: flex; flex-direction: column; gap: 12px; }
-.code { font-weight: 600; font-size: 120px; line-height: .9; letter-spacing: -.03em; color: var(--text); }
+.code { margin: 0; font-weight: 300; font-size: clamp(44px, 10vw, 96px); line-height: 1; letter-spacing: -.02em; color: var(--text); }
 .missing-line { font-size: 22px; color: var(--text); }
 
 @media (min-width: 760px) {
@@ -114,5 +114,4 @@ html { scroll-snap-type: y proximity; }
   .sec-body { gap: 22px; }
   .sec.sec-game { display: flex; }
   .missing-text { padding-bottom: 48px; }
-  .code { font-size: 200px; }
 }
