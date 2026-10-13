@@ -1,0 +1,18 @@
+# Dormroom Studios
+
+> Dormroom Studios is a three-person independent game studio in India. Its first title is Neon Fragments, a single-player cyberpunk-noir first-person shooter coming to Steam (Windows) on 25 February 2027.
+
+## Facts
+
+- Studio: Dormroom Studios, India, team of three
+- Contact: hello@neonfragments.com
+- Studio site: https://dormroom.in/
+- Game: Neon Fragments
+- Game site: https://neonfragments.com/ (its own summary is at https://neonfragments.com/llms.txt)
+- Steam page: https://store.steampowered.com/app/3641020/Neon_Fragments/
+- Gameplay trailer: https://www.youtube.com/watch?v=BytSgDMmVEI
+- Release: 25 February 2027, Steam, Windows
+
+## Pages
+
+- [Home](https://dormroom.in/): about the studio, the game, contact.
