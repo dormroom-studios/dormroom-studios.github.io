@@ -26,7 +26,8 @@
 html { background: var(--ink); color-scheme: dark; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body { margin: 0; background: var(--ink); color: var(--text); font: 400 17px/1.55 Barlow, system-ui, sans-serif; overflow-x: clip; }
 h2, p { margin: 0; }
-h2 { font-weight: 500; font-size: 26px; line-height: 1.2; }
+h2 { font-weight: 500; font-size: 15px; line-height: 1.2; color: var(--muted); }
+.lede { font-weight: 300; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -.012em; color: var(--text); max-width: 16ch; }
 p { color: var(--text-2); max-width: 620px; text-wrap: pretty; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: var(--text); text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; transition: color .18s ease, background-color .18s ease, border-color .18s ease; }
@@ -63,8 +64,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .btn-outline:hover { border-color: var(--accent); }
 
 /* Sections */
-.sec { padding: 56px var(--gutter); border-top: 1px solid var(--hairline); display: flex; flex-direction: column; gap: 16px; }
-.sec h2 { margin-bottom: 4px; }
+.sec { padding: 56px var(--gutter); border-top: 1px solid var(--hairline); display: flex; flex-direction: column; gap: 28px; }
+.sec-head, .sec-body { display: flex; flex-direction: column; gap: 14px; }
+.sec-body { gap: 18px; }
 .sec.sec-game { padding-left: 0; padding-right: 0; gap: 28px; }
 /* The poster is artwork: never cropped, never taller than the smallest viewport. */
 .panel img { width: min(100%, calc(100svh * 16 / 9)); margin-inline: auto; aspect-ratio: 16 / 9; }
@@ -75,8 +77,13 @@ html { scroll-snap-type: y proximity; }
 #about { scroll-snap-align: end; }
 .panel { scroll-snap-align: center; }
 .game-text { scroll-snap-align: start; }
-.game-text { padding: 0 var(--gutter); display: flex; flex-direction: column; gap: 16px; }
-.game-head, .game-body { display: flex; flex-direction: column; gap: 12px; }
+.game-text { padding: 0 var(--gutter); display: flex; flex-direction: column; gap: 28px; }
+.facts { margin: 0; display: flex; flex-direction: column; max-width: 620px; }
+.facts div { display: grid; grid-template-columns: 7em 1fr; gap: 16px; padding: 10px 0; border-top: 1px solid var(--hairline); }
+.facts div:last-child { border-bottom: 1px solid var(--hairline); }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.email { display: inline-block; align-self: flex-start; font-weight: 300; font-size: clamp(22px, 4.2vw, 40px); line-height: 1.1; letter-spacing: -.01em; overflow-wrap: anywhere; text-decoration-thickness: 1px; }
 
 .foot { padding: 24px var(--gutter) 32px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 14px; }
 
@@ -101,12 +108,11 @@ html { scroll-snap-type: y proximity; }
   .countdown { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 24px; }
   .num { font-size: clamp(72px, 7.5vw, 112px); }
   .btn { flex: 0 0 auto; }
-  .sec { padding: 96px var(--gutter); gap: 18px; }
+  .sec { padding: 96px var(--gutter); }
   .sec.sec-game { gap: 40px; }
-  /* Room below the poster so it can snap fully out of view; text is short on wide screens. */
-  #contact { min-height: 100svh; justify-content: center; }
-  .game-text { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
-  .game-body { gap: 16px; }
+  .sec, .game-text { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .sec-body { gap: 22px; }
+  .sec.sec-game { display: flex; }
   .missing-text { padding-bottom: 48px; }
   .code { font-size: 200px; }
 }
