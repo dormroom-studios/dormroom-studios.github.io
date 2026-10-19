@@ -23,3 +23,6 @@ function tick() {
 
 tick();
 setInterval(tick, 1000);
+
+// The gamescom asia note takes itself down once the show closes.
+if (Date.now() > Date.parse('2026-11-01T20:00:00+07:00')) document.querySelector('[data-event-note]').remove();
