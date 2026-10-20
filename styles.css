@@ -33,7 +33,6 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: var(--text); text-decoration: underline; text-decoration-color: var(--muted); text-underline-offset: 3px; transition: color .18s ease, background-color .18s ease, border-color .18s ease; }
 a:hover { color: var(--accent); text-decoration-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.todo { font-family: var(--mono); font-size: 12px; color: var(--accent); background: none; }
 .meta { color: var(--muted); }
 .inline-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .inline-links a { min-height: 44px; display: inline-flex; align-items: center; }

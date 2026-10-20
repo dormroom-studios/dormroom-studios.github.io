@@ -5,7 +5,7 @@
 ## Facts
 
 - Studio: Dormroom Studios, India, team of three
-- Contact: hello@neonfragments.com
+- Contact: hello@dormroom.in
 - Studio site: https://dormroom.in/
 - Game: Neon Fragments
 - Game site: https://neonfragments.com/ (its own summary is at https://neonfragments.com/llms.txt)
