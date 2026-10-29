@@ -1,6 +1,6 @@
 // Live countdown to launch.
-// Launch: 25 February 2027. Time of day is a guess (10:00 Pacific, Steam's usual release hour); adjust if the dev gives one.
-const LAUNCH = new Date('2027-02-25T18:00:00Z');
+// Launch: 30 April 2027. Time of day is a guess (10:00 Pacific Daylight Time, Steam's usual release hour); adjust if the dev gives one.
+const LAUNCH = new Date('2027-04-30T17:00:00Z');
 
 const pad = (n) => String(n).padStart(2, '0');
 const fields = ['days', 'hours', 'minutes', 'seconds'].map((name) => ({
